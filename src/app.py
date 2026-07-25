@@ -147,7 +147,9 @@ if (load_btn or "analyzed" in st.session_state) and ticker:
             st.divider()
             for item in detective.get("items", []):
                 border = {"green":"2px solid #00a86b","yellow":"2px solid #e6a817","red":"2px solid #e74c3c"}
-                st.markdown(f'<div style="border-left:{border[item[\"status\"]]};padding:0.8rem;margin:0.8rem 0;background:#fafafa;border-radius:4px;"><strong>{"🟢" if item[\"status\"]=="green" else "🟡" if item[\"status\"]=="yellow" else "🔴"} {item[\"name\"]}</strong> 评分：{item[\"score\"]:.2f}<br><small>{item[\"detail\"][:150]}</small></div>', unsafe_allow_html=True)
+                                icon = "🟢" if item["status"]=="green" else ("🟡" if item["status"]=="yellow" else "🔴")
+                detail_preview = item["detail"][:150]
+                st.markdown(f'<div style="border-left:{border[item["status"]]};padding:0.8rem;margin:0.8rem 0;background:#fafafa;border-radius:4px;"><strong>{icon} {item["name"]}</strong> 评分：{item["score"]:.2f}<br><small>{detail_preview}...</small></div>', unsafe_allow_html=True)
 
         with tab3:
             st.subheader("📢 公告追踪 - 智能摘要与关联分析")
