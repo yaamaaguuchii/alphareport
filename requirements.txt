@@ -1,5 +1,5 @@
 streamlit==1.40.0
-akshare==1.16.2
+akshare==1.16.72
 plotly==5.24.0
 matplotlib==3.9.0
 pandas==2.2.0
