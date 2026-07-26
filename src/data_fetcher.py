@@ -59,12 +59,12 @@ def _safe_akshare(func, *args, **kwargs):
 # 预置模拟数据（当网络不可用或 API 限流时使用）
 # ============================================================
 
+
 _MOCK_COMPANIES = {
     "600519": {
-        "name": "贵州茅台",
-        "industry": "白酒",
+        "name": "贵州茅台", "industry": "白酒",
         "description": "贵州茅台酒股份有限公司，主营茅台酒及系列酒的生产与销售，是中国白酒行业的龙头企业。",
-        "revenue": [1230, 1095, 1062, 979, 854],  # 近5年营收（亿元）
+        "revenue": [1230, 1095, 1062, 979, 854],
         "revenue_years": [2024, 2023, 2022, 2021, 2020],
         "net_profit": [620, 560, 528, 470, 412],
         "operating_cashflow": [580, 520, 490, 430, 380],
@@ -78,27 +78,8 @@ _MOCK_COMPANIES = {
         "market_cap": "21000亿",
         "related_party_ratio": 0.03,
     },
-    "000002": {
-        "name": "万科A",
-        "industry": "房地产开发",
-        "description": "万科企业股份有限公司，中国领先的城乡建设与生活服务商，主营业务为房地产开发及相关资产经营。",
-        "revenue": [4650, 4460, 5040, 4190, 3680],
-        "revenue_years": [2024, 2023, 2022, 2021, 2020],
-        "net_profit": [260, 320, 500, 380, 290],
-        "operating_cashflow": [180, 210, 350, 280, 200],
-        "receivables": [820, 650, 480, 350, 280],
-        "inventory_days": [950, 920, 880, 850, 820],
-        "debt_ratio": [0.74, 0.72, 0.70, 0.68, 0.65],
-        "current_ratio": [1.2, 1.3, 1.4, 1.5, 1.6],
-        "gross_margin": [0.15, 0.18, 0.21, 0.22, 0.25],
-        "roe": [0.06, 0.08, 0.12, 0.10, 0.08],
-        "pe_ratio": [15, 12, 8, 10, 12],
-        "market_cap": "1200亿",
-        "related_party_ratio": 0.15,
-    },
     "300750": {
-        "name": "宁德时代",
-        "industry": "电池",
+        "name": "宁德时代", "industry": "电池",
         "description": "宁德时代新能源科技股份有限公司，全球领先的动力电池和储能系统提供商。",
         "revenue": [3800, 3200, 2800, 2100, 1600],
         "revenue_years": [2024, 2023, 2022, 2021, 2020],
@@ -114,241 +95,234 @@ _MOCK_COMPANIES = {
         "market_cap": "12000亿",
         "related_party_ratio": 0.08,
     },
+    "000002": {
+        "name": "万科A", "industry": "房地产开发",
+        "description": "万科企业股份有限公司，中国领先的城乡建设与生活服务商。",
+        "revenue": [4650, 4460, 5040, 4190, 3680],
+        "revenue_years": [2024, 2023, 2022, 2021, 2020],
+        "net_profit": [260, 320, 500, 380, 290],
+        "operating_cashflow": [180, 210, 350, 280, 200],
+        "receivables": [820, 650, 480, 350, 280],
+        "inventory_days": [950, 920, 880, 850, 820],
+        "debt_ratio": [0.74, 0.72, 0.70, 0.68, 0.65],
+        "current_ratio": [1.2, 1.3, 1.4, 1.5, 1.6],
+        "gross_margin": [0.15, 0.18, 0.21, 0.22, 0.25],
+        "roe": [0.06, 0.08, 0.12, 0.10, 0.08],
+        "pe_ratio": [15, 12, 8, 10, 12],
+        "market_cap": "1200亿",
+        "related_party_ratio": 0.15,
+    },
+    "601318": {
+        "name": "中国平安", "industry": "保险",
+        "description": "中国平安保险（集团）股份有限公司，中国领先的综合金融服务集团。",
+        "revenue": [10200, 9500, 9200, 8800, 8400],
+        "revenue_years": [2024, 2023, 2022, 2021, 2020],
+        "net_profit": [980, 920, 880, 850, 800],
+        "operating_cashflow": [1050, 980, 920, 880, 820],
+        "receivables": [45, 42, 38, 35, 32],
+        "inventory_days": [5, 5, 5, 5, 5],
+        "debt_ratio": [0.72, 0.71, 0.70, 0.70, 0.69],
+        "current_ratio": [1.1, 1.1, 1.2, 1.2, 1.3],
+        "gross_margin": [0.28, 0.26, 0.25, 0.24, 0.23],
+        "roe": [0.14, 0.13, 0.12, 0.11, 0.10],
+        "pe_ratio": [10, 9, 8, 9, 10],
+        "market_cap": "8000亿",
+        "related_party_ratio": 0.05,
+    },
+    "000001": {
+        "name": "平安银行", "industry": "银行",
+        "description": "平安银行股份有限公司，中国领先的股份制商业银行。",
+        "revenue": [1650, 1580, 1520, 1480, 1420],
+        "revenue_years": [2024, 2023, 2022, 2021, 2020],
+        "net_profit": [450, 420, 400, 380, 350],
+        "operating_cashflow": [480, 440, 410, 390, 360],
+        "receivables": [15, 14, 13, 12, 11],
+        "inventory_days": [0, 0, 0, 0, 0],
+        "debt_ratio": [0.68, 0.67, 0.66, 0.65, 0.64],
+        "current_ratio": [1.5, 1.5, 1.6, 1.6, 1.7],
+        "gross_margin": [0.32, 0.31, 0.30, 0.30, 0.29],
+        "roe": [0.12, 0.11, 0.11, 0.10, 0.10],
+        "pe_ratio": [6, 5, 6, 7, 8],
+        "market_cap": "2800亿",
+        "related_party_ratio": 0.02,
+    },
+    "600036": {
+        "name": "招商银行", "industry": "银行",
+        "description": "招商银行股份有限公司，中国领先的股份制商业银行，以零售银行业务著称。",
+        "revenue": [3800, 3600, 3450, 3300, 3100],
+        "revenue_years": [2024, 2023, 2022, 2021, 2020],
+        "net_profit": [1480, 1380, 1300, 1200, 1100],
+        "operating_cashflow": [1520, 1420, 1320, 1250, 1150],
+        "receivables": [12, 11, 10, 10, 9],
+        "inventory_days": [0, 0, 0, 0, 0],
+        "debt_ratio": [0.65, 0.65, 0.64, 0.63, 0.62],
+        "current_ratio": [1.6, 1.6, 1.7, 1.7, 1.8],
+        "gross_margin": [0.35, 0.34, 0.33, 0.33, 0.32],
+        "roe": [0.16, 0.15, 0.14, 0.13, 0.12],
+        "pe_ratio": [8, 7, 8, 9, 10],
+        "market_cap": "9500亿",
+        "related_party_ratio": 0.01,
+    },
 }
 
 
 def get_mock_data(ticker: str) -> Optional[dict]:
-    """获取预置模拟数据"""
     return _MOCK_COMPANIES.get(ticker)
 
 
 def get_available_mock_tickers():
-    """获取所有可用的模拟股票代码"""
     return list(_MOCK_COMPANIES.keys())
 
 
-# ============================================================
-# AKShare 实时数据获取
-# ============================================================
-
-def fetch_stock_info(ticker: str) -> dict:
-    """获取个股基本信息"""
-    import akshare as ak
-    try:
-        df = _safe_akshare(ak.stock_individual_info_em, symbol=ticker)
-        if not df.empty:
-            info = dict(zip(df["item"], df["value"]))
-            return info
-    except:
-        pass
-    return {}
-
-
-def fetch_financial_data(ticker: str, years: int = 5) -> pd.DataFrame:
-    """
-    获取个股财务数据（利润表）
-    返回 DataFrame，列包含：股票代码、报告期、营业收入、净利润等
-    """
-    import akshare as ak
-    try:
-        df = _safe_akshare(ak.stock_profit_sheet_by_report_em, symbol=ticker)
-        if not df.empty:
-            df = df.sort_values("报告期", ascending=False).head(years * 4)
-            return df
-    except:
-        pass
-    return pd.DataFrame()
-
-
-def fetch_balance_sheet(ticker: str, years: int = 5) -> pd.DataFrame:
-    """获取资产负债表数据"""
-    import akshare as ak
-    try:
-        df = _safe_akshare(ak.stock_balance_sheet_by_report_em, symbol=ticker)
-        if not df.empty:
-            df = df.sort_values("报告期", ascending=False).head(years * 4)
-            return df
-    except:
-        pass
-    return pd.DataFrame()
-
-
-def fetch_cashflow_data(ticker: str, years: int = 5) -> pd.DataFrame:
-    """获取现金流量表数据"""
-    import akshare as ak
-    try:
-        df = _safe_akshare(ak.stock_cash_flow_sheet_by_report_em, symbol=ticker)
-        if not df.empty:
-            df = df.sort_values("报告期", ascending=False).head(years * 4)
-            return df
-    except:
-        pass
-    return pd.DataFrame()
-
-
-def fetch_announcements(ticker: str, days: int = 365) -> pd.DataFrame:
-    """
-    获取个股公告列表
-    """
-    import akshare as ak
-    try:
-        df = _safe_akshare(ak.stock_notice_report, symbol=ticker)
-        if not df.empty:
-            return df.head(50)
-    except:
-        pass
-    return pd.DataFrame()
-
-
-def fetch_financial_indicators(ticker: str) -> pd.DataFrame:
-    """获取财务分析指标（含 ROE、毛利率、资产负债率等）"""
-    import akshare as ak
-    try:
-        df = _safe_akshare(ak.stock_financial_analysis_indicator, symbol=ticker)
-        if not df.empty:
-            return df.sort_values("报告期", ascending=False).head(10)
-    except:
-        pass
-    return pd.DataFrame()
-
-
 def get_company_data(ticker: str, use_mock: bool = True) -> Dict:
-    """
-    统一的公司数据获取入口
-    先尝试 AKShare 实时数据，失败则回退到模拟数据
-    """
-    # 先检查缓存
     cache_key = f"company_{ticker}"
     cached = _read_cache(cache_key)
-    if cached:
+    if cached and "name" in cached and "revenue" in cached:
         return cached
-
     data = {"ticker": ticker}
 
-    # 尝试获取实时数据
-    try:
-        info = fetch_stock_info(ticker)
-        if info:
-            data["name"] = info.get("股票简称", ticker)
-            data["industry"] = info.get("行业", "")
-            data["market_cap"] = info.get("总市值", "")
-            data["pe_ratio"] = info.get("市盈率-动态", "")
-    except:
-        pass
-
-    # 如果实时数据不足且允许模拟数据，使用模拟数据
-    if (not data.get("name") or data.get("name") == ticker) and use_mock:
+    # Demo mode - use mock data
+    if use_mock:
         mock = get_mock_data(ticker)
         if mock:
             data.update(mock)
             data["source"] = "mock"
             _write_cache(cache_key, data)
             return data
+        data["name"] = f"股票{ticker}"
+        data["industry"] = "未知"
+        data["source"] = "not_found"
+        return data
 
-    data["source"] = "realtime"
-    _write_cache(cache_key, data)
+    # Real mode - fetch from AKShare
+    try:
+        import akshare as ak
+
+        # 1. Basic info
+        try:
+            info_df = ak.stock_individual_info_em(symbol=ticker)
+            if info_df is not None and not info_df.empty:
+                info = dict(zip(info_df["item"], info_df["value"]))
+                data["name"] = info.get("股票简称", f"股票{ticker}")
+                data["industry"] = info.get("行业", "未知")
+                data["market_cap"] = str(info.get("总市值", ""))
+                data["pe_ratio"] = info.get("市盈率-动态", "")
+        except:
+            data["name"] = f"股票{ticker}"
+            data["industry"] = "未知"
+
+        # 2. Profit sheet (营收, 净利润, 毛利率)
+        years_list = []
+        revenue_list = []
+        profit_list = []
+        gross_list = []
+        try:
+            pf = ak.stock_profit_sheet_by_report_em(symbol=ticker)
+            if pf is not None and not pf.empty:
+                pf = pf.sort_values("报告期", ascending=True).tail(5)
+                for _, row in pf.iterrows():
+                    years_list.append(str(row.get("报告期", ""))[:4])
+                    revenue_list.append(float(row.get("营业收入", 0) if row.get("营业收入") else 0))
+                    profit_list.append(float(row.get("净利润", 0) if row.get("净利润") else 0))
+                    rev = float(row.get("营业收入", 0) if row.get("营业收入") else 0)
+                    cost = float(row.get("营业成本", 0) if row.get("营业成本") else 0)
+                    if rev > 0:
+                        gross_list.append((rev - cost) / rev)
+                    else:
+                        gross_list.append(0)
+                data["revenue_years"] = years_list
+                data["revenue"] = revenue_list
+                data["net_profit"] = profit_list
+                data["gross_margin"] = gross_list
+        except:
+            pass
+
+        # 3. Balance sheet (应收, 存货, 负债率, 流动比率)
+        try:
+            bs = ak.stock_balance_sheet_by_report_em(symbol=ticker)
+            if bs is not None and not bs.empty:
+                bs = bs.sort_values("报告期", ascending=True).tail(5)
+                rec_list = []
+                inv_list = []
+                debt_list = []
+                cur_list = []
+                for _, row in bs.iterrows():
+                    total_assets = float(row.get("资产总计", 0) if row.get("资产总计") else 1)
+                    total_liab = float(row.get("负债合计", 0) if row.get("负债合计") else 0)
+                    cur_assets = float(row.get("流动资产合计", 0) if row.get("流动资产合计") else 0)
+                    cur_liab = float(row.get("流动负债合计", 0) if row.get("流动负债合计") else 1)
+                    rec_list.append(float(row.get("应收账款", 0) if row.get("应收账款") else 0))
+                    inv_list.append(float(row.get("存货", 0) if row.get("存货") else 0))
+                    debt_list.append(total_liab / total_assets if total_assets > 0 else 0)
+                    cur_list.append(cur_assets / cur_liab if cur_liab > 0 else 0)
+                data["receivables"] = rec_list
+                data["inventory_days"] = [d * 365 / max(r, 1) for d, r in zip(inv_list, revenue_list)] if revenue_list else [0]*5
+                data["debt_ratio"] = debt_list
+                data["current_ratio"] = cur_list
+        except:
+            pass
+
+        # 4. Cash flow (经营性现金流)
+        try:
+            cf = ak.stock_cash_flow_sheet_by_report_em(symbol=ticker)
+            if cf is not None and not cf.empty:
+                cf = cf.sort_values("报告期", ascending=True).tail(5)
+                cf_list = []
+                for _, row in cf.iterrows():
+                    cf_list.append(float(row.get("经营活动产生的现金流量净额", 0) if row.get("经营活动产生的现金流量净额") else 0))
+                data["operating_cashflow"] = cf_list
+        except:
+            pass
+
+        # 5. Financial analysis indicators (ROE)
+        try:
+            fi = ak.stock_financial_analysis_indicator(symbol=ticker)
+            if fi is not None and not fi.empty:
+                fi = fi.sort_values("报告期", ascending=True).tail(5)
+                roe_list = []
+                for _, row in fi.iterrows():
+                    roe_list.append(float(row.get("净资产收益率", 0) if row.get("净资产收益率") else 0) / 100)
+                data["roe"] = roe_list
+        except:
+            pass
+
+        data["related_party_ratio"] = 0.05
+        data["source"] = "akshare"
+        _write_cache(cache_key, data)
+
+    except ImportError:
+        data["name"] = f"股票{ticker}"
+        data["industry"] = "未知"
+        data["source"] = "akshare_not_installed"
+        print("请安装 akshare: pip install akshare")
+
     return data
 
-
 def get_mock_announcements(ticker: str) -> list:
-    """获取模拟的公告数据（用于演示）"""
-    mock_announcements = {
+    mock_data = {
         "600519": [
-            {
-                "date": "2026-06-15",
-                "title": "贵州茅台关于2025年度利润分配方案的公告",
-                "type": "分红",
-                "summary": "拟每10股派发现金红利200元（含税），总计派发约250亿元",
-                "level": "A"
-            },
-            {
-                "date": "2026-04-28",
-                "title": "贵州茅台2025年年度报告",
-                "type": "定期报告",
-                "summary": "2025年营收1230亿元，同比增长12.3%；净利润620亿元，同比增长10.7%",
-                "level": "S"
-            },
-            {
-                "date": "2026-04-10",
-                "title": "贵州茅台关于参与设立产业投资基金的公告",
-                "type": "投资",
-                "summary": "拟出资50亿元参与设立消费产业投资基金",
-                "level": "B"
-            },
-            {
-                "date": "2026-03-01",
-                "title": "贵州茅台关于董事长变更的公告",
-                "type": "人事变动",
-                "summary": "张德芹辞去董事长职务，由王莉接任",
-                "level": "A"
-            },
-            {
-                "date": "2026-01-20",
-                "title": "贵州茅台2025年度业绩预告",
-                "type": "业绩预告",
-                "summary": "预计2025年净利润约620亿元，同比增长约11%",
-                "level": "S"
-            },
-            {
-                "date": "2025-12-15",
-                "title": "贵州茅台关于回购股份实施结果的公告",
-                "type": "回购",
-                "summary": "累计回购股份120万股，耗资约20亿元",
-                "level": "B"
-            },
-            {
-                "date": "2025-11-08",
-                "title": "贵州茅台关于控股股东增持计划的公告",
-                "type": "增持",
-                "summary": "控股股东茅台集团拟在未来6个月内增持15-30亿元",
-                "level": "A"
-            },
+            {"date": "2026-06-15", "title": "贵州茅台关于2025年度利润分配方案的公告", "type": "分红", "summary": "拟每10股派发现金红利200元", "level": "A"},
+            {"date": "2026-04-28", "title": "贵州茅台2025年年度报告", "type": "定期报告", "summary": "2025年营收1230亿元，净利润620亿元", "level": "S"},
+            {"date": "2026-03-01", "title": "贵州茅台关于董事长变更的公告", "type": "人事变动", "summary": "张德芹辞去董事长职务，由王莉接任", "level": "A"},
+            {"date": "2026-01-20", "title": "贵州茅台2025年度业绩预告", "type": "业绩预告", "summary": "预计2025年净利润约620亿元", "level": "S"},
         ],
         "300750": [
-            {
-                "date": "2026-06-20",
-                "title": "宁德时代关于匈牙利工厂投产的公告",
-                "type": "业务进展",
-                "summary": "匈牙利第二座电池工厂正式投产，设计产能40GWh",
-                "level": "S"
-            },
-            {
-                "date": "2026-04-26",
-                "title": "宁德时代2025年年度报告",
-                "type": "定期报告",
-                "summary": "2025年营收3800亿元，同比增长18.8%；净利润420亿元，同比增长20%",
-                "level": "S"
-            },
-            {
-                "date": "2026-02-15",
-                "title": "宁德时代关于与某国际车企签订供货协议的公告",
-                "type": "合同",
-                "summary": "与某国际知名车企签订5年动力电池供货协议，总金额约200亿元",
-                "level": "A"
-            },
+            {"date": "2026-06-20", "title": "宁德时代关于匈牙利工厂投产的公告", "type": "业务进展", "summary": "匈牙利第二座电池工厂正式投产", "level": "S"},
+            {"date": "2026-04-26", "title": "宁德时代2025年年度报告", "type": "定期报告", "summary": "2025年营收3800亿元，同比增长18.8%", "level": "S"},
         ],
         "000002": [
-            {
-                "date": "2026-06-10",
-                "title": "万科A关于为子公司提供担保的公告",
-                "type": "担保",
-                "summary": "为子公司向银行申请贷款提供担保，合计金额约30亿元",
-                "level": "B"
-            },
-            {
-                "date": "2026-04-29",
-                "title": "万科A2025年年度报告",
-                "type": "定期报告",
-                "summary": "2025年营收4650亿元，同比增长4.3%；净利润260亿元，同比下降18.8%",
-                "level": "S"
-            },
-            {
-                "date": "2026-03-20",
-                "title": "万科A关于成功发行中期票据的公告",
-                "type": "融资",
-                "summary": "成功发行20亿元中期票据，利率3.2%",
-                "level": "B"
-            },
+            {"date": "2026-04-29", "title": "万科A2025年年度报告", "type": "定期报告", "summary": "2025年营收4650亿元，净利润260亿元", "level": "S"},
+            {"date": "2026-03-20", "title": "万科A关于成功发行中期票据的公告", "type": "融资", "summary": "成功发行20亿元中期票据", "level": "B"},
+        ],
+        "601318": [
+            {"date": "2026-04-30", "title": "中国平安2025年年度报告", "type": "定期报告", "summary": "2025年营收10200亿元，净利润980亿元", "level": "S"},
+            {"date": "2026-03-15", "title": "中国平安关于2025年度利润分配的公告", "type": "分红", "summary": "拟每股派发现金红利2.5元", "level": "A"},
+        ],
+        "000001": [
+            {"date": "2026-04-28", "title": "平安银行2025年年度报告", "type": "定期报告", "summary": "2025年营收1650亿元，净利润450亿元", "level": "S"},
+        ],
+        "600036": [
+            {"date": "2026-04-26", "title": "招商银行2025年年度报告", "type": "定期报告", "summary": "2025年营收3800亿元，净利润1480亿元", "level": "S"},
         ],
     }
-    return mock_announcements.get(ticker, [])
+    return mock_data.get(ticker, [])
